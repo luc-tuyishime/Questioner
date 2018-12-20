@@ -430,6 +430,26 @@ hr.style-one {
   background-image: -o-linear-gradient(left, #eeeeee, #eeeeee, #eeeeee);
 }
 
+/* User Profile */
+.container-profile {
+  margin-left: 80px;
+}
+
+.container-profile p {
+  font-family: "Roboto", sans-serif;
+  color: #757575;
+}
+
+.container-profile span {
+  color: #0277bd;
+  font-size: 20px;
+}
+
+.Reset {
+  color: blue !important;
+  font-size: 20px;
+}
+
 /* Footer */
 
 .footer {
