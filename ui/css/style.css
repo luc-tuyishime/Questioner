@@ -350,14 +350,18 @@ header.topbar {
 }
 
 .fa-thumbs-up {
-  font-size: 30px;
+  font-size: 16px;
   cursor: pointer;
   user-select: none;
 }
 .fa-thumbs-down {
-  font-size: 30px;
+  font-size: 16px;
   cursor: pointer;
   user-select: none;
+}
+
+.fa-thumbs-down:hover {
+  color: darkblue;
 }
 
 .fa-thumbs-up:hover {
