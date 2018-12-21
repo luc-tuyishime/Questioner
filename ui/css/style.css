@@ -434,6 +434,49 @@ hr.style-one {
   background-image: -o-linear-gradient(left, #eeeeee, #eeeeee, #eeeeee);
 }
 
+@media only screen and (max-width: 600px) {
+  .btn-open {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #01579b;
+    width: 80%;
+    border: 0;
+    padding: 13px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .container-questions .list span .btn-comment {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #01579b;
+    width: 100%;
+    border-radius: 5px;
+    border: 0;
+    padding: 5px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .container-questions .list span .input-comment {
+    font-family: "Roboto", sans-serif;
+    outline: 1;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    margin: 0 0 15px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+}
+
 /* Footer */
 
 .footer {
