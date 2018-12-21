@@ -171,6 +171,16 @@ header.topbar {
   padding-bottom: 30px;
 }
 
+.meetups-wrapper,
+div {
+  font-family: "Roboto", sans-serif;
+}
+
+.text-meetup {
+  font-size: 17px;
+  color: gray;
+}
+
 .meetups1-wrapper {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -350,14 +360,18 @@ header.topbar {
 }
 
 .fa-thumbs-up {
-  font-size: 30px;
+  font-size: 16px;
   cursor: pointer;
   user-select: none;
 }
 .fa-thumbs-down {
-  font-size: 30px;
+  font-size: 16px;
   cursor: pointer;
   user-select: none;
+}
+
+.fa-thumbs-down:hover {
+  color: darkblue;
 }
 
 .fa-thumbs-up:hover {
@@ -430,7 +444,89 @@ hr.style-one {
   background-image: -o-linear-gradient(left, #eeeeee, #eeeeee, #eeeeee);
 }
 
-/* User Profile */
+@media only screen and (max-width: 600px) {
+  .btn-open {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #01579b;
+    width: 80%;
+    border: 0;
+    padding: 13px;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 13px;
+    cursor: pointer;
+  }
+
+  .container-questions .list span .btn-comment {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #01579b;
+    width: 100%;
+    border-radius: 5px;
+    border: 0;
+    padding: 5px;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+  }
+
+  .container-questions .list span .input-comment {
+    font-family: "Roboto", sans-serif;
+    outline: 1;
+    background: #f2f2f2;
+    width: 100%;
+    border: 0;
+    border-radius: 5px;
+    margin: 0 0 15px;
+    padding: 5px;
+    box-sizing: border-box;
+    font-size: 14px;
+  }
+
+  .btn-open-home {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #01579b;
+    width: 30%;
+    border: 0;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  .btn-delete {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #b71c1c;
+    width: 30%;
+    border: 0;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  .meetups-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 15px;
+    display: table-cell !important;
+    vertical-align: middle !important;
+  }
+
+  .meetups-wrapper,
+  .meetup-grid {
+    margin-bottom: 20px;
+    margin-left: 40px;
+  }
+}
+
 .container-profile {
   margin-left: 80px;
 }
