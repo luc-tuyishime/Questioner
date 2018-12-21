@@ -171,6 +171,16 @@ header.topbar {
   padding-bottom: 30px;
 }
 
+.meetups-wrapper,
+div {
+  font-family: "Roboto", sans-serif;
+}
+
+.text-meetup {
+  font-size: 17px;
+  color: gray;
+}
+
 .meetups1-wrapper {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -474,6 +484,46 @@ hr.style-one {
     padding: 5px;
     box-sizing: border-box;
     font-size: 14px;
+  }
+
+  .btn-open-home {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #01579b;
+    width: 30%;
+    border: 0;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  .btn-delete {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    outline: 0;
+    background: #b71c1c;
+    width: 30%;
+    border: 0;
+    color: #fff;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+  }
+
+  .meetups-wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 15px;
+    display: table-cell !important;
+    vertical-align: middle !important;
+  }
+
+  .meetups-wrapper,
+  .meetup-grid {
+    margin-bottom: 20px;
+    margin-left: 40px;
   }
 }
 
