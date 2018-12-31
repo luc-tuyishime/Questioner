@@ -9,4 +9,4 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
 ---
 
 ## License && copyright
-&copy Jean luc Tuyishime, Software developer
+Copyright (c) Jean luc Tuyishime, Software developer
