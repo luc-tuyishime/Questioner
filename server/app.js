@@ -1,24 +1,32 @@
-const express = require('express');
+import express from 'express';
 
-const logger = require('./middleware/logger');
+import bodyparser from 'body-parser';
+
+import helmet from 'helmet';
+
+import morgan from 'morgan';
+
+import logger from './middleware/logger';
+
+import meetups from './routes/meetups';
+
+import users from './routes/users';
 
 const app = express();
 
-const helmet = require('helmet');
+// get setting of our app
 
-const morgan = require('morgan');
+app.use(bodyparser.json());
 
-const config = require('config'); // get setting of our app
-
-const meetups = require('./routes/meetups');
+// const home = require('./routes/home');
 
 app.use(express.json());
 
 app.use(logger);
 app.use(helmet());
-app.use('/api/v1/meetups', meetups); // for any route started with /api/v1 use meetups router
-
-console.log(`Application Name: ${config.get('name')}`);
+app.use(meetups); // for any route started with /api/v1 use meetups router
+app.use(users);
+// app.use('/', home);
 
 if (app.get('env') === 'development') {
   app.use(morgan('tiny'));
@@ -28,3 +36,5 @@ if (app.get('env') === 'development') {
 // PORT
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Listening on port ${port}...`));
+
+export default app;
