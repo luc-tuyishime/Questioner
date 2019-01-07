@@ -12,7 +12,7 @@ const meetups = [
     createdOn: 'January 10 2019',
     location: 'Marriot Hotel',
     topic: 'Mastering Javascript',
-    happeningOn: '19/01/2019',
+    happeningOn: '23/01/2019',
     tags: 'react angular coffescript'
   },
   {
