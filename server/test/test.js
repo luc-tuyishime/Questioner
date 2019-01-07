@@ -13,7 +13,7 @@ const meetups = [
     id: 1,
     createdOn: '10/01/2019',
     location: 'klab',
-    topic: 'Learn how to code',
+    topic: 'Learn how to code for fun',
     happeningOn: '12/01/2019',
     tags: ['html', 'css', 'Javascript']
   },
