@@ -24,8 +24,6 @@ app.use(bodyparser.json());
 
 app.use(express.json());
 
-require('./prod')(app);
-
 app.use(logger);
 app.use(helmet());
 app.use(meetups); // for any route started with /api/v1 use meetups router
