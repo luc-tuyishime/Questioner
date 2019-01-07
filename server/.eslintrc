@@ -12,6 +12,7 @@
       "rules": {
         "comma-dangle": ["error", "never"],
         "no-unused-vars": ["error", { "vars": "local", "args": "none" }],
-         'no-console': 'off'
+         'no-console': 'off',
+         'no-plusplus': 'off'
         }
 }

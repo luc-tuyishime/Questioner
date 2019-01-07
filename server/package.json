@@ -7,6 +7,9 @@
     "start": "nodemon --exec babel-node --presets env app",
     "test": "mocha --require babel-register"
   },
+  "engines": {
+   "node": "8.9.4"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -32,6 +35,7 @@
     "body-parser": "^1.18.3",
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
+    "compression": "^1.7.3",
     "config": "^3.0.1",
     "debug": "^4.1.1",
     "express": "^4.16.4",

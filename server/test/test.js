@@ -74,3 +74,25 @@ describe('create a meetup', () => {
       });
   });
 });
+
+
+describe('Get all upcoming meetup', () => {
+  it('/GET/meetups/upcoming', (done) => {
+    const fetch = {
+      id: meetups.length + 1,
+      location: 'klab',
+      topic: 'Learn how to code',
+      happeningOn: 'Mai 13, 2019',
+      tags: 'html  css'
+    };
+    chai.request(app)
+      .post('/api/v1/upcomingMeetup/')
+      .send(fetch)
+      .end((err, res) => {
+        console.log(res.body);
+        res.body.should.be.a('object');
+        res.body.should.have.property('status').eql(200);
+        done();
+      });
+  });
+});

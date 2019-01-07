@@ -10,6 +10,8 @@ import logger from './middleware/logger';
 
 import meetups from './routes/meetups';
 
+import upcomingMeetups from './routes/upcomingMeetups';
+
 import users from './routes/users';
 
 const app = express();
@@ -22,9 +24,12 @@ app.use(bodyparser.json());
 
 app.use(express.json());
 
+require('./prod')(app);
+
 app.use(logger);
 app.use(helmet());
 app.use(meetups); // for any route started with /api/v1 use meetups router
+app.use(upcomingMeetups);
 app.use(users);
 // app.use('/', home);
 
