@@ -14,6 +14,8 @@ import upcomingMeetups from './routes/upcomingMeetups';
 
 import questions from './routes/questions';
 
+import upvote from './routes/upvoteQuestion';
+
 import users from './routes/users';
 
 const app = express();
@@ -30,6 +32,7 @@ app.use(helmet());
 app.use(meetups); // for any route started with /api/v1 use meetups router
 app.use(upcomingMeetups);
 app.use(questions);
+app.use(upvote);
 app.use(users);
 
 if (app.get('env') === 'development') {
