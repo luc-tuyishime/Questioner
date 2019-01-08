@@ -16,6 +16,8 @@ import questions from './routes/questions';
 
 import upvote from './routes/upvoteQuestion';
 
+import downvote from './routes/downvoteQuestion';
+
 import users from './routes/users';
 
 const app = express();
@@ -33,6 +35,7 @@ app.use(meetups); // for any route started with /api/v1 use meetups router
 app.use(upcomingMeetups);
 app.use(questions);
 app.use(upvote);
+app.use(downvote);
 app.use(users);
 
 if (app.get('env') === 'development') {
