@@ -8,23 +8,34 @@ const router = express.Router();
 
 moment.suppressDeprecationWarnings = true;
 
+
 router.get('/api/v1/upcomingMeetup/', (req, res) => {
   const fetch = [];
-  for (let i = 0; i < meetups.length; i++) {
-    if (moment(meetups[i].happeningOn).isSameOrAfter(moment().format('LL')));
-    fetch.push(meetups[i]);
-    console.log(meetups[i]);
+  const current_date = moment().unix();
+  for(let a = 0 ; a < meetups.length ; a ++){
+    let happeningOnOrAfter = meetups[a].happeningOn;
+        happeningOnOrAfter = new Date(happeningOnOrAfter).getTime();
+        happeningOnOrAfter = happeningOnOrAfter/1000;
+        if( current_date <= happeningOnOrAfter ){
+          fetch.push(meetups[a]);
+        }
   }
-  if (fetch > 0) {
+
+  if(fetch.length > 0){
     return res.status(200).send({
       status: 200,
       data: fetch
     });
   }
-  return res.status(404).send({
-    status: 404,
-    error: 'No meetup to show for upcoming meetups'
-  });
+  else {
+    return res.status(404).send({
+      status: 404,
+      error: 'NO UPCOMING MEETUP TO SHOW'
+    });
+  }
+
+
+
 });
 
 export default router;

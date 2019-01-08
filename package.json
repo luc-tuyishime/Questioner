@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "node --exec babel-node --presets env app",
+    "start": "nodemon --exec babel-node --presets env app",
     "test": "mocha --require babel-register"
   },
   "engines": {

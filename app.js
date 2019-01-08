@@ -20,7 +20,6 @@ const app = express();
 
 app.use(bodyparser.json());
 
-// const home = require('./routes/home');
 
 app.use(express.json());
 
@@ -29,12 +28,15 @@ app.use(helmet());
 app.use(meetups); // for any route started with /api/v1 use meetups router
 app.use(upcomingMeetups);
 app.use(users);
-// app.use('/', home);
 
 if (app.get('env') === 'development') {
   app.use(morgan('tiny'));
   console.log('development enabled...');
 }
+
+app.use('/', (req, res) => {
+  res.send('Welcome to questioner app')
+});
 
 // PORT
 const port = process.env.PORT || 5000;

@@ -4,7 +4,7 @@ const meetups = [
     createdOn: 'January 10 2019',
     location: 'klab',
     topic: 'Learn how to code',
-    happeningOn: 'January 02, 2019',
+    happeningOn: '01/02/2019',
     tags: 'html css Javascript'
   },
   {
@@ -12,7 +12,7 @@ const meetups = [
     createdOn: 'January 10 2019',
     location: 'Marriot Hotel',
     topic: 'Mastering Javascript',
-    happeningOn: 'March 11, 2019',
+    happeningOn: '03/11/2019',
     tags: 'react angular coffescript'
   },
   {
@@ -20,7 +20,7 @@ const meetups = [
     createdOn: 'January 01 2019',
     location: 'Serena Hotel',
     topic: 'Backend Development',
-    happeningOn: 'Fevrier 14, 2019',
+    happeningOn: '02/13/2019',
     tags: 'golang python Java'
   }
 ];
