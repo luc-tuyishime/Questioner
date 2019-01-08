@@ -6,9 +6,6 @@ import meetups from '../models/meetups';
 
 const router = express.Router();
 
-moment.suppressDeprecationWarnings = true;
-
-
 router.get('/api/v1/upcomingMeetup/', (req, res) => {
   const fetch = [];
   const current_date = moment().unix();
