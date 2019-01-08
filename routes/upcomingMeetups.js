@@ -30,9 +30,6 @@ router.get('/api/v1/upcomingMeetup/', (req, res) => {
       error: 'NO UPCOMING MEETUP TO SHOW'
     });
   }
-
-
-
 });
 
 export default router;
