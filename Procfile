@@ -1,1 +1,1 @@
-web: node --exec babel-node --presets env app
+web: node --require babel-register app.js
