@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --exec babel-node --presets env app",
-    "test": "mocha --require babel-register --timeout 10000 --exit"
+    "test": "nyc --reporter=html --reporter=text mocha --require babel-register --timeout 10000 --exit",
+    "coveralls": "nyc report --reporter=text-lcov || coveralls "
   },
   "engines": {
     "node": "8.9.4"
@@ -31,6 +32,7 @@
     "chai-http": "^4.2.1",
     "compression": "^1.7.3",
     "config": "^3.0.1",
+    "coveralls": "^3.0.2",
     "debug": "^4.1.1",
     "express": "^4.16.4",
     "helmet": "^3.15.0",
@@ -38,6 +40,7 @@
     "moment": "^2.23.0",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.9",
+    "nyc": "^13.1.0",
     "pg-promise": "^8.5.4",
     "sparta": "0.0.1",
     "supertest": "^3.3.0"
