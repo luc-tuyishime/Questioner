@@ -1,5 +1,6 @@
-# Questioner
+# Questioner  [![Build Status](https://travis-ci.org/luc-tuyishime/Questioner.svg?branch=develop)](https://travis-ci.org/luc-tuyishime/Questioner) [![Coverage Status](https://coveralls.io/repos/github/luc-tuyishime/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/luc-tuyishime/Questioner?branch=develop)
 Questioner​​ helps the meetup organizer prioritize questions to be answered. Other users can vote on asked questions and they bubble to the top or bottom of the log.
+
 
 ## User Interface (UI)
 * HTML

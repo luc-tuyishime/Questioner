@@ -1,0 +1,48 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon --exec babel-node --presets env app",
+    "test": "nyc --reporter=html --reporter=text mocha --require babel-register --timeout 10000 --exit",
+    "coveralls": "nyc report --reporter=text-lcov || coveralls "
+  },
+  "engines": {
+    "node": "8.9.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "eslint": "^5.11.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-jsx-a11y": "^6.0.1",
+    "mocha": "^5.2.0",
+    "mocha-lcov-reporter": "^1.3.0"
+  },
+  "dependencies": {
+    "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-register": "^6.26.0",
+    "body-parser": "^1.18.3",
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "compression": "^1.7.3",
+    "config": "^3.0.1",
+    "coveralls": "^3.0.2",
+    "debug": "^4.1.1",
+    "express": "^4.16.4",
+    "helmet": "^3.15.0",
+    "joi": "^14.3.1",
+    "moment": "^2.23.0",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.9",
+    "nyc": "^13.1.0",
+    "pg-promise": "^8.5.4",
+    "sparta": "0.0.1",
+    "supertest": "^3.3.0"
+  }
+}
