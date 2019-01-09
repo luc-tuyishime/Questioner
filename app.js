@@ -18,6 +18,8 @@ import upvote from './routes/upvoteQuestion';
 
 import downvote from './routes/downvoteQuestion';
 
+import rsvp from './routes/rsvpMeetup';
+
 import users from './routes/users';
 
 const app = express();
@@ -36,6 +38,7 @@ app.use(upcomingMeetups);
 app.use(questions);
 app.use(upvote);
 app.use(downvote);
+app.use(rsvp);
 app.use(users);
 
 if (app.get('env') === 'development') {
