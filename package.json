@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "nodemon --exec babel-node --presets env app",
-    "test": "mocha --require babel-register"
+    "test": "mocha --require babel-register --timeout 10000 --exit"
   },
   "engines": {
     "node": "8.9.4"
