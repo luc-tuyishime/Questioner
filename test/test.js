@@ -103,7 +103,7 @@ describe('create Rsvp for meetup', () => {
       .end((err, res) => {
         console.log(res.body);
         res.body.should.be.a('object');
-        res.body.should.have.property('status').eql(201);
+        res.body.should.have.property('status').eql(200);
         done();
       });
   });
