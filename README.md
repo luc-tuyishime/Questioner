@@ -7,7 +7,7 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
 * CSS
 * Javascript
 
-### Link Example
+### UI Link Example
 [Questioner link](https://luc-tuyishime.github.io/Questioner/)
 
 ## API ENDPOINTS
@@ -29,6 +29,10 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
 
 ## Tools Used
 
+### Language
+```
+*Javascript*
+```
 ### Server Environment
 ```
  *NodeJS* (run time Environment for running JS codes)
@@ -39,8 +43,31 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
  ```
 ### Testing Framework
 ```
- **Mocha** and **Chai**
+ *Mocha* and *Chai*
  ```
+### Style Guide
+```
+*Airbnb*
+```
+### Continuous Integration
+```
+Travis CI
+```
+### Test Coverage
+```
+nyc
+```
+### Git badge
+```
+coveralls
+```
+### Deployment
+```
+Heroku
+```
+### APP link Example
+
+(https://lucquestioner.herokuapp.com/)
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
