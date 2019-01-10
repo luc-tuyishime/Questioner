@@ -17,15 +17,14 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
 | / | GET | The index (welcome message) |
 | /api/v1/meetups | GET | Fetch all meetups |
 | /api/v1/meetups/:id | GET | Fetch a particular meetup |
-| /api/v1/meetups/:id | GET | Fetch a particular meetup |
 | /api/v1/questions/ | GET | Fetch all meetup questions  |
 | /api/v1/upcomingMeetup | GET | Fetch all upcoming meetups |
 | /api/v1/meetups | POST | Post to the collection of meetups |
 | /api/v1/questions | POST | Post a question on meetup |
 | /api/v1/meetups/:id | PATCH | Update a particular meetup |
 | /api/v1/meetups/:id | PATCH | Update a particular meetup |
-| /api/v1/questions/:id / upvote / | PATCH | Upvote on a meetup question |
-| /api/v1/questions/:id / downvote / | PATCH | Downvote on a meetup question |
+| /api/v1/questions/:id/upvote | PATCH | Upvote on a meetup question |
+| /api/v1/questions/:id/downvote  | PATCH | Downvote on a meetup question |
 | /api/v1/meetups/:id | DELETE | Delete a particular meetup |
 
 ## Getting Started
