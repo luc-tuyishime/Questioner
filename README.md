@@ -14,9 +14,7 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
 
 | Ressource URL | Methods  | Description  |
 | ------- | --- | --- |
-```
 | / | GET | The index (welcome message) |
-```
 | /api/v1/meetups | GET | Fetch all meetups |
 | /api/v1/meetups/:id | GET | Fetch a particular meetup |
 | /api/v1/meetups/:id | GET | Fetch a particular meetup |
