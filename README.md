@@ -31,10 +31,10 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
 
 ### Server Environment
  **NodeJS** (run time Environment for running JS codes)
-* Framework
- *Express* (used for building fast APIs)
- * Testing Framework
- *Mocha* and *Chai*
+### Framework
+ **Express** (used for building fast APIs)
+### Testing Framework
+ **Mocha** and **Chai**
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
