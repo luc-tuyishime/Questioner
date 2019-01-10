@@ -103,14 +103,12 @@ describe('Get all upcoming meetup', () => {
 describe('create Rsvp for meetup', () => {
   it('/POST /meetups/<meetup-id>/rsvps', (done) => {
     const RsvpMeetup = {
-      id: rsvp.length + 1,
-      topic: 'we here',
-      meetup: parseInt(req.params.id, 10),
-      status: 'no'
-    };
     chai.request(app)
-      .post('/api/v1/meetups/:id/rsvps')
-      .send(RsvpMeetup)
+      .post('/api/v1/meetups/1/rsvps')
+      .send({
+        topic: 'we here',
+        status: 'no'
+      })
       .end((err, res) => {
         console.log(res.body);
         res.body.should.be.a('object');
