@@ -4,6 +4,8 @@ import chaiHttp from 'chai-http';
 
 import app from '../app';
 
+import rsvp from '../models/rsvp';
+
 chai.use(chaiHttp);
 
 chai.should();
@@ -84,6 +86,25 @@ describe('Get all upcoming meetup', () => {
         console.log(res.body);
         res.body.should.be.a('object');
         res.body.should.have.property('status').eql(200);
+        done();
+      });
+  });
+});
+
+
+describe('create Rsvp for meetup', () => {
+  it('/POST /meetups/<meetup-id>/rsvps', (done) => {
+    const RsvpMeetup = {
+      topic: 'we here',
+      status: 'no'
+    };
+    chai.request(app)
+      .post('/api/v1/meetups/:id/rsvps')
+      .send(RsvpMeetup)
+      .end((err, res) => {
+        console.log(res.body);
+        res.body.should.be.a('object');
+        res.body.should.have.property('status').eql(201);
         done();
       });
   });
