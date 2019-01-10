@@ -27,6 +27,15 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
 | /api/v1/questions/:id/downvote  | PATCH | Downvote on a meetup question |
 | /api/v1/meetups/:id | DELETE | Delete a particular meetup |
 
+## Tools Used
+
+* Server Environment
+ *NodeJS* (run time Environment for running JS codes)
+* Framework
+ *Express* (used for building fast APIs)
+ * Testing Framework
+ *Mocha* and *Chai*
+
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
