@@ -14,19 +14,21 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
 
 | Ressource URL | Methods  | Description  |
 | ------- | --- | --- |
+```
 | / | GET | The index (welcome message) |
-| / api / v1 / meetups / | GET | Fetch all meetups |
-| / api / v1 / meetups / :id | GET | Fetch a particular meetup |
-| / api / v1 / meetups / :id | GET | Fetch a particular meetup |
-| / api / v1 / questions / | GET | Fetch all meetup questions  |
-| / api / v1 / upcomingMeetup / | GET | Fetch all upcoming meetups |
-| / api / v1 / meetups / | POST | Post to the collection of meetups |
-| / api / v1 / questions / | POST | Post a question on meetup |
-| / api / v1 / meetups / :id / | PATCH | Update a particular meetup |
-| / api / v1 / meetups / :id / | PATCH | Update a particular meetup |
-| / api / v1 / questions / :id / upvote / | PATCH | Upvote on a meetup question |
-| / api / v1 / questions / :id / downvote / | PATCH | Downvote on a meetup question |
-| / api / v1 / meetups / :id / | DELETE | Delete a particular meetup |
+```
+| /api/v1/meetups | GET | Fetch all meetups |
+| /api/v1/meetups/:id | GET | Fetch a particular meetup |
+| /api/v1/meetups/:id | GET | Fetch a particular meetup |
+| /api/v1/questions/ | GET | Fetch all meetup questions  |
+| /api/v1/upcomingMeetup | GET | Fetch all upcoming meetups |
+| /api/v1/meetups | POST | Post to the collection of meetups |
+| /api/v1/questions | POST | Post a question on meetup |
+| /api/v1/meetups/:id | PATCH | Update a particular meetup |
+| /api/v1/meetups/:id | PATCH | Update a particular meetup |
+| /api/v1/questions/:id / upvote / | PATCH | Upvote on a meetup question |
+| /api/v1/questions/:id / downvote / | PATCH | Downvote on a meetup question |
+| /api/v1/meetups/:id | DELETE | Delete a particular meetup |
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
