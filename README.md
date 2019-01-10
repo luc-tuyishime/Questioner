@@ -85,7 +85,18 @@ The installation of this application is fairly straightforward, After cloning th
 ```
 > npm install
 ```
+
 It will install the node_modules which will help you run the project on your local machine.
+
+## Run the server
+```
+> npm start
+```
+## Run the test
+```
+> npm test
+```
+
 
 **Version 1.0.0**
 
