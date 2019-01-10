@@ -99,8 +99,11 @@ describe('create Rsvp for meetup', () => {
       status: 'no'
     };
     chai.request(app)
-      .post('/api/v1/meetups/:id/rsvps')
-      .send(RsvpMeetup)
+      .post('/api/v1/meetups/1/rsvps')
+      .send({
+        topic: 'we here',
+        status: 'no'
+      })
       .end((err, res) => {
         console.log(res.body);
         res.body.should.be.a('object');
