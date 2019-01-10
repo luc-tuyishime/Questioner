@@ -47,7 +47,7 @@ if (app.get('env') === 'development') {
 }
 
 app.use('/', (req, res) => {
-  res.send('Welcome to questioner app')
+  res.send('Welcome to questioner app');
 });
 
 // PORT

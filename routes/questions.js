@@ -2,9 +2,9 @@ import express from 'express';
 
 import Joi from 'joi';
 
-import questions from '../models/questions';
-
 import moment from 'moment';
+
+import questions from '../models/questions';
 
 const router = express.Router();
 
@@ -29,10 +29,10 @@ router.get('/api/v1/questions/', (req, res) => {
 });
 
 router.post('/api/v1/questions/', (req, res) => {
-   const { error } = validateMeetup(req.body);
-   if (error) {
-     return res.status(400).send(error.details[0].message);
-   }
+  const { error } = validateMeetup(req.body);
+  if (error) {
+    return res.status(400).send(error.details[0].message);
+  }
   const question = {
     id: parseInt(questions.length + 1, 10),
     createdOn: moment().format('LL'),
