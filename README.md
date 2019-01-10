@@ -12,9 +12,11 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
 
 ## API ENDPOINTS
 
-| Attempt | #1  | #2  |
+| Ressource URL | Methods  | Description  |
 | ------- | --- | --- |
-| Seconds | 301 | 283 |
+| / | GET | The index (welcome message) |
+| ------- | --- | --- |
+| /api/v1/meetups | GET | Fetch all meetups |
 
 ## Getting Started
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
