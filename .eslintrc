@@ -14,5 +14,5 @@
         "no-unused-vars": ["error", { "vars": "local", "args": "none" }],
          'no-console': 'off',
          'no-plusplus': 'off'
-        }
+        } 
 }
