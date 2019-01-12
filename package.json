@@ -6,7 +6,7 @@
   "scripts": {
     "start": "nodemon --exec babel-node --presets env app",
     "test": "nyc --reporter=html --reporter=text mocha --require babel-register --timeout 10000 --exit",
-    "coveralls": "nyc report --reporter=text-lcov || coveralls "
+    "coverage": "nyc report --reporter=text-lcov | coveralls "
   },
   "engines": {
     "node": "8.9.4"
