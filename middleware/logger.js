@@ -1,5 +1,5 @@
 function log(req, res, next) {
-  console.log('Loging...');
+  console.log('Logging...');
   next();
 }
 
