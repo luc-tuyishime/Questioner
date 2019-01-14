@@ -1,0 +1,56 @@
+body {
+  background-image: url(./img/img-login-wallpaper.jpg);
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.signup-page {
+  width: 360px;
+  padding: 7% 0 0;
+  margin: auto;
+}
+
+.text_sign_up {
+  font-family: "Roboto", sans-serif;
+  font-size: 22px;
+}
+
+.form {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  max-width: 360px;
+  margin: 0 auto 100px;
+  padding: 35px;
+  text-align: center;
+}
+
+.form input {
+  font-family: "Roboto", sans-serif;
+  outline: 1;
+  background: #f2f2f2;
+  width: 100%;
+  border: 0;
+  margin: 0 0 15px;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
+.message {
+  font-family: "Roboto", sans-serif;
+}
+
+.form button {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
+  background: #01579b;
+  width: 100%;
+  border: 0;
+  padding: 15px;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
