@@ -610,3 +610,7 @@ hr.style-one {
   height: auto;
   height: 500px;
 }
+
+textarea {
+  resize: none;
+}
