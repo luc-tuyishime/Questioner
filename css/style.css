@@ -216,6 +216,21 @@ div {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
   outline: 0;
+  background: #2e7d32;
+  width: 20%;
+  border: 0;
+  padding: 13px;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 13px;
+  cursor: pointer;
+  margin-left: 20px;
+}
+
+.btn-open-home-edit {
+  font-family: "Roboto", sans-serif;
+  text-transform: uppercase;
+  outline: 0;
   background: #01579b;
   width: 20%;
   border: 0;
@@ -224,7 +239,6 @@ div {
   border-radius: 5px;
   font-size: 13px;
   cursor: pointer;
-  margin-left: 40px;
 }
 
 .btn-delete {
@@ -491,7 +505,7 @@ hr.style-one {
     font-size: 14px;
   }
 
-  .btn-open-home {
+  /* .btn-open-home {
     font-family: "Roboto", sans-serif;
     text-transform: uppercase;
     outline: 0;
@@ -502,7 +516,7 @@ hr.style-one {
     border-radius: 5px;
     font-size: 10px;
     cursor: pointer;
-  }
+  } */
 
   .btn-delete {
     font-family: "Roboto", sans-serif;
