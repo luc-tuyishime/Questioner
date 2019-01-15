@@ -164,7 +164,8 @@ header.topbar {
 .meetups-title {
   text-align: center;
   font-family: "Roboto", sans-serif;
-  margin-top: 100px;
+  margin-top: 10px;
+  font-size: 30px;
 }
 
 .meetups-wrapper {
@@ -575,4 +576,10 @@ hr.style-one {
   padding: 1rem;
   background-color: #efefef;
   text-align: center;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+  height: 500px;
 }
