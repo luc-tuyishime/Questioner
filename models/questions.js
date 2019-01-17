@@ -6,7 +6,8 @@ const questions = [
     meetup: 1,
     title: 'New Question',
     body: 'lorem ipsum dollar sit amet',
-    votes: 2
+    upvote: 0,
+    downvote: 0
   },
   {
     id: 2,
@@ -15,7 +16,8 @@ const questions = [
     meetup: 2,
     title: 'Reconciliation',
     body: 'we must be here',
-    votes: 9
+    upvote: 0,
+    downvote: 0
   }
 ];
 

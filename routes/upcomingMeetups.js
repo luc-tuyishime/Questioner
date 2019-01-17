@@ -6,7 +6,7 @@ import meetups from '../models/meetups';
 
 const router = express.Router();
 
-router.get('/api/v1/upcomingMeetup/', (req, res) => {
+router.get('/upcoming', (req, res) => {
   const fetch = [];
   const currentDate = moment().unix();
   for (let a = 0; a < meetups.length; a++) {

@@ -10,14 +10,14 @@ import { validateQuestion } from '../helpers/validation';
 
 const router = express.Router();
 
-router.get('/api/v1/questions/', (req, res) => {
+router.get('/:meetupId/questions', (req, res) => {
   res.send({
     status: 200,
     data: [questions]
   });
 });
 
-router.post('/api/v1/meetups/:meetupId/questions/', (req, res) => {
+router.post('/:meetupId/questions', (req, res) => {
   const question = {
     id: parseInt(questions.length + 1, 10),
     meetup: req.params.meetupId,

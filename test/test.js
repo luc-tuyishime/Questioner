@@ -58,7 +58,6 @@ describe('/get a specific meetup', () => {
 describe('create a meetup', () => {
   it('/POST /meetups/', (done) => {
     const meetup = {
-      id: meetups.length + 1,
       createdOn: 'January 06 2019',
       location: 'klab',
       topic: 'Learn how to code',
@@ -81,7 +80,7 @@ describe('create a meetup', () => {
 describe('Get all upcoming meetup', () => {
   it('/GET/meetups/upcoming', (done) => {
     chai.request(app)
-      .get('/api/v1/upcomingMeetup/')
+      .get('/api/v1/meetup/upcoming')
       .end((err, res) => {
         console.log(res.body);
         res.body.should.be.a('object');

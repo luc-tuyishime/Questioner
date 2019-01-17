@@ -10,14 +10,14 @@ import { validateMeetup }  from '../helpers/validation';
 
 const router = express.Router();
 
-router.get('/api/v1/meetups', (req, res) => {
+router.get('/', (req, res) => {
   res.send({
     status: 200,
     data: [meetups]
   });
 });
 
-router.get('/api/v1/meetups/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const meetup = meetups.find(m => m.id === parseInt(req.params.id, 10));
   if (!meetup) {
     return res.status(404).send({
@@ -31,14 +31,14 @@ router.get('/api/v1/meetups/:id', (req, res) => {
   });
 });
 
-router.post('/api/v1/meetups', (req, res) => {
-  //  const { error } = validateMeetup(req.body);
-  //  if (error) {
-  //    return res.status(400).send({
-  //      status: 400,
-  //      error : error.details[0].message
-  //  });
-  // }
+router.post('/', (req, res) => {
+    const { error } = validateMeetup(req.body);
+    if (error) {
+      return res.status(400).send({
+        status: 400,
+        error : error.details[0].message
+    });
+   }
   const meetup = {
     id: parseInt(meetups.length + 1, 10),
     createdOn: moment().format('LL'),
@@ -55,7 +55,7 @@ router.post('/api/v1/meetups', (req, res) => {
   }));
 });
 
-router.patch('/api/v1/meetups/:id', (req, res) => {
+router.patch('/:id', (req, res) => {
   // Look up the meetup
   // if not existing, return 404
   const meetup = meetups.find(m => m.id === parseInt(req.params.id, 10));
@@ -86,7 +86,7 @@ router.patch('/api/v1/meetups/:id', (req, res) => {
   });
 });
 
-router.delete('/api/v1/meetups/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const meetup = meetups.find(m => m.id === parseInt(req.params.id, 10));
   if (!meetup) {
     return res.status(404).send({
