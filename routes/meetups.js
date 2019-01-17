@@ -13,7 +13,8 @@ function validateMeetup(meetup) {
     createdOn: Joi.string().min(3).required(),
     location: Joi.string().min(3).required(),
     topic: Joi.string().min(3).required(),
-    happeningOn: Joi.string().min(3).required()
+    happeningOn: Joi.string().min(3).required(),
+    tags: Joi.string().allow('').trim().strict()
   };
 
   return Joi.validate(meetup, schema);
@@ -54,7 +55,7 @@ router.post('/api/v1/meetups', (req, res) => {
     location: req.body.location,
     topic: req.body.topic,
     happeningOn: req.body.happeningOn,
-    tags: req.body.tags.split('')
+    tags: req.body.tags
   };
   meetups.push(meetup);
 
