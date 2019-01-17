@@ -10,12 +10,8 @@ const router = express.Router();
 
 function validateMeetup(question) {
   const schema = {
-    createdOn: Joi.string().min(3).required(),
-    createdBy: Joi.number().required(),
     title: Joi.string().required(),
-    meetup: Joi.number().required(),
-    body: Joi.string().required(),
-    votes: Joi.number().min(3).required()
+    body: Joi.string().required()
   };
 
   return Joi.validate(question, schema);
@@ -31,16 +27,15 @@ router.get('/api/v1/questions/', (req, res) => {
 router.post('/api/v1/questions/', (req, res) => {
   const { error } = validateMeetup(req.body);
   if (error) {
-    return res.status(400).send(error.details[0].message);
+    return res.status(400).send({
+      status : 400,
+      error : error.details[0].message});
   }
   const question = {
     id: parseInt(questions.length + 1, 10),
-    createdOn: moment().format('LL'),
-    createdBy: req.body.createdBy,
-    title: req.body.title,
     meetup: req.body.topic,
+    title: req.body.title,
     body: req.body.body,
-    votes: req.body.votes
   };
   questions.push(question);
 

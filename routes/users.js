@@ -30,7 +30,10 @@ router.get('/api/v1/users', (req, res) => {
 
 router.get('/api/v1/users/:id', (req, res) => {
   const user = users.find(u => u.id === parseInt(req.params.id, 10));
-  if (!user) res.status(404).send(`The user with the id ${req.params.id} was not found`);
+  if (!user) res.status(404).send({
+    status: 404,
+    error : `The user with the id ${req.params.id} was not found`
+  });
   res.send(user);
 });
 
@@ -60,7 +63,10 @@ router.put('/api/v1/users/:id', (req, res) => {
   // if not existing, return 404
   const user = users.find(m => m.id === parseInt(req.params.id, 10));
   if (!user) {
-    return res.status(404).send(`The user with the id ${req.params.id} was not found`);
+    return res.status(404).send({
+      status: 404,
+      error : `The user with the id ${req.params.id} was not found`
+    });
   }
   // validate
   // if invalid, return 400 - bad request
@@ -82,7 +88,10 @@ router.put('/api/v1/users/:id', (req, res) => {
 
 router.delete('/api/v1/users/:id', (req, res) => {
   const user = users.find(u => u.id === parseInt(req.params.id, 10));
-  if (!user) res.status(404).send(`The user with the id ${req.params.id} was not found`);
+  if (!user) res.status(404).send({
+    status: 404,
+    error : `The user with the id ${req.params.id} was not found`
+  });
 
   const index = users.indexOf(user);
   users.splice(index, 1);
