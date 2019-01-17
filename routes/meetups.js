@@ -6,19 +6,9 @@ import moment from 'moment';
 
 import meetups from '../models/meetups';
 
+import { validateMeetup }  from '../helpers/validation';
+
 const router = express.Router();
-
-function validateMeetup(meetup) {
-  const schema = {
-    createdOn: Joi.string().min(3).required(),
-    location: Joi.string().min(3).required(),
-    topic: Joi.string().min(3).required(),
-    happeningOn: Joi.string().min(3).required(),
-    tags: Joi.string().allow('').trim().strict()
-  };
-
-  return Joi.validate(meetup, schema);
-}
 
 router.get('/api/v1/meetups', (req, res) => {
   res.send({

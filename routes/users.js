@@ -2,24 +2,11 @@ import express from 'express';
 
 import users from '../models/users';
 
+import  { validateUser }  from '../helpers/validation';
+
 const Joi = require('joi');
 
 const router = express.Router();
-
-function validateUser(user) {
-  const schema = {
-    firstname: Joi.string().min(3).required(),
-    lastname: Joi.string().min(3).required(),
-    othername: Joi.string().min(3).required(),
-    email: Joi.string().email().min(3).required(),
-    phoneNumber: Joi.string().min(3).required(),
-    username: Joi.string().min(3).required(),
-    registered: Joi.string().min(3).required(),
-    isAdmin: Joi.boolean().required()
-  };
-
-  return Joi.validate(user, schema);
-}
 
 router.get('/api/v1/users', (req, res) => {
   res.send({
@@ -44,12 +31,14 @@ router.post('/api/v1/users/', (req, res) => {
   }
   const user = {
     id: users.length + 1,
-    createdOn: req.body.moment().format('LL'),
-    location: req.body.location,
-    images: req.body.images,
-    topic: req.body.topic,
-    happeningOn: req.body.happeningOn,
-    tags: req.body.tags
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
+    othername: req.body.othername,
+    email: req.body.email,
+    phoneNumber: req.body.phoneNumber,
+    username: req.body.username,
+    registered: req.body.registered,
+    isAdmin: req.body.isAdmin
   };
   users.push(user);
   return res.send({

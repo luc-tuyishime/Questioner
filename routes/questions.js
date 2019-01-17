@@ -1,21 +1,14 @@
 import express from 'express';
 
-import Joi from 'joi';
-
 import moment from 'moment';
 
 import questions from '../models/questions';
 
+import meetups from '../models/meetups';
+
+import { validateQuestion } from '../helpers/validation';
+
 const router = express.Router();
-
-function validateMeetup(question) {
-  const schema = {
-    title: Joi.string().required(),
-    body: Joi.string().required()
-  };
-
-  return Joi.validate(question, schema);
-}
 
 router.get('/api/v1/questions/', (req, res) => {
   res.send({
@@ -24,23 +17,35 @@ router.get('/api/v1/questions/', (req, res) => {
   });
 });
 
-router.post('/api/v1/questions/', (req, res) => {
-  const { error } = validateMeetup(req.body);
-  if (error) {
-    return res.status(400).send({
-      status : 400,
-      error : error.details[0].message});
-  }
+router.post('/api/v1/meetups/:meetupId/questions/', (req, res) => {
   const question = {
     id: parseInt(questions.length + 1, 10),
-    meetup: req.body.topic,
+    meetup: req.params.meetupId,
     title: req.body.title,
     body: req.body.body,
+    upvote: 0,
+    downvote: 0
   };
+
+  const meetup = meetups.find(m => m.id === parseInt(req.params.meetupId, 10));
+  if (!meetup) res.status(404).send({
+    status: 404,
+    error : `The meetup with the id ${req.params.meetupId} was not found`
+  });
+
+
+  const { error } = validateQuestion(req.body);
+  if (error) {
+    return res.status(400).send({
+      status: 400,
+      error: error.details[0].message
+    });
+  }
+
   questions.push(question);
 
   return res.send(({
-    status: 201,
+    status: 200,
     data: [question]
   }));
 });
