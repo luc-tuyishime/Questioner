@@ -4,9 +4,11 @@ import meetups from '../models/meetups';
 
 import rsvp from '../models/rsvp';
 
+import { validateRsvp } from '../helpers/validation';
+
 const router = express.Router();
 
-router.post('/api/v1/meetups/:id/rsvps', (req, res) => {
+router.post('/:id/rsvps', (req, res) => {
   const meetup = meetups.find(m => m.id === parseInt(req.params.id, 10));
   console.log(parseInt(req.params.id, 10));
   if (!meetup) {
@@ -14,6 +16,14 @@ router.post('/api/v1/meetups/:id/rsvps', (req, res) => {
       status: 404,
       error: `the meetup with Id ${RsvpMeetup.meetup} is not found`
     });
+  }
+
+  const { error } = validateRsvp(req.body);
+  if(error){
+    return res.status(400).send({
+      status: 400,
+      error: error.details[0].message
+    })
   }
 
   const RsvpMeetup = {

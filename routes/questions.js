@@ -10,7 +10,7 @@ import { validateQuestion } from '../helpers/validation';
 
 const router = express.Router();
 
-router.get('/:meetupId/questions', (req, res) => {
+router.get('', (req, res) => {
   res.send({
     status: 200,
     data: [questions]

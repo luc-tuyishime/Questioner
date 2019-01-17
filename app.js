@@ -38,7 +38,7 @@ app.use('/api/v1/meetup', upcomingMeetups);
 app.use('/api/v1/meetups', questions);
 app.use(upvote);
 app.use(downvote);
-app.use(rsvp);
+app.use('/api/v1/meetups', rsvp);
 app.use(users);
 
 if (app.get('env') === 'development') {

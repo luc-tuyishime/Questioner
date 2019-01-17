@@ -6,28 +6,11 @@ import app from '../app';
 
 import rsvp from '../models/rsvp';
 
+import meetups from '../models/meetups';
+
 chai.use(chaiHttp);
 
 chai.should();
-
-const meetups = [
-  {
-    id: 1,
-    createdOn: '10/01/2019',
-    location: 'klab',
-    topic: 'Learn how to code for fun',
-    happeningOn: '12/01/2019',
-    tags: ['html', 'css', 'Javascript']
-  },
-  {
-    id: 2,
-    createdOn: '15/01/2019',
-    location: 'Marriot Hotel',
-    topic: 'Mastering Javascript',
-    happeningOn: '19/01/2019',
-    tags: ['react', 'angular', 'coffescript']
-  }
-];
 
 describe('/get all meetups', () => {
   it('/GET /meetups/', (done) => {
@@ -91,12 +74,31 @@ describe('Get all upcoming meetup', () => {
 });
 
 
+// test create a question
+describe('create a question', () => {
+  it('/POST /meetups/<meetup-Id>/question', (done) => {
+    const meetup = {
+      title: 'voila',
+      body: 'ici on est au calm'
+    };
+    chai.request(app)
+      .post('/api/v1/meetups/1/questions')
+      .send(meetup)
+      .end((err, res) => {
+        console.log(res.body);
+        res.body.should.be.a('object');
+        res.body.should.have.property('status').eql(200);
+        done();
+      });
+  });
+});
+
+
 describe('create Rsvp for meetup', () => {
   it('/POST /meetups/<meetup-id>/rsvps', (done) => {
     chai.request(app)
       .post('/api/v1/meetups/1/rsvps')
       .send({
-        topic: 'we here',
         status: 'no'
       })
       .end((err, res) => {

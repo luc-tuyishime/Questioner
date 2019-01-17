@@ -35,3 +35,11 @@ export const validateUser = (user) => {
 
   return Joi.validate(user, schema);
 }
+
+export const validateRsvp = (rsvp) => {
+  const schema = {
+    status: Joi.string().min(2).required()
+  };
+
+  return Joi.validate(rsvp, schema);
+}
