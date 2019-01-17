@@ -60,6 +60,29 @@ describe('create a meetup', () => {
 });
 
 
+// test create a meetup
+describe('update a meetup', () => {
+  it('/PATCH /meetups/<meetupId>', (done) => {
+    const meetup = {
+      createdOn: "17/01/19",
+      location: "kigali",
+      topic: "we here",
+      happeningOn: "03/01/19",
+      tags: "java rubi"
+    };
+    chai.request(app)
+      .patch('/api/v1/meetups/1')
+      .send(meetup)
+      .end((err, res) => {
+        console.log(res.body);
+        res.body.should.be.a('object');
+        res.body.should.have.property('status').eql(200);
+        done();
+      });
+  });
+});
+
+
 describe('Get all upcoming meetup', () => {
   it('/GET/meetups/upcoming', (done) => {
     chai.request(app)
@@ -101,6 +124,19 @@ describe('create Rsvp for meetup', () => {
       .send({
         status: 'no'
       })
+      .end((err, res) => {
+        console.log(res.body);
+        res.body.should.be.a('object');
+        res.body.should.have.property('status').eql(200);
+        done();
+      });
+  });
+});
+
+describe('/Delete a meetup', () => {
+  it('/Delete/meetups/meetupId', (done) => {
+    chai.request(app)
+      .delete('/api/v1/meetups/2')
       .end((err, res) => {
         console.log(res.body);
         res.body.should.be.a('object');
