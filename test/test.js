@@ -145,3 +145,27 @@ describe('/Delete a meetup', () => {
       });
   });
 });
+
+
+// test create a meetup
+describe('upvote a question', () => {
+  it('Should upvote a question', (done) => {
+    const upvote = {
+      createdBy: 4,
+      meetup: 2,
+      title: "Reconciliation",
+      body: "we must be here",
+      upvote: 2,
+      downvote: 0
+    };
+    chai.request(app)
+      .patch('/api/v1/questions/1/upvote')
+      .send(upvote)
+      .end((err, res) => {
+        console.log(res.body);
+        res.body.should.be.a('object');
+        res.body.should.have.property('status').eql(200);
+        done();
+      });
+  });
+});
