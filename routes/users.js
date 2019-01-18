@@ -63,7 +63,7 @@ router.put('/api/v1/users/:id', (req, res) => {
   if (error) res.status(400).send(error.details[0].message);
   // update user
   // return the update user
-  user.createdOn = req.body.moment().format('LL');
+  user.createdOn = Date.now();
   user.location = req.body.location;
   user.images = req.body.images;
   user.topic = req.body.topic;
