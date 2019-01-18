@@ -153,7 +153,7 @@ describe('upvote a question', () => {
     const upvote = {
       createdBy: 4,
       meetup: 2,
-      title: "Reconciliation",
+      title: "Greatest",
       body: "we must be here",
       upvote: 2,
       downvote: 0
