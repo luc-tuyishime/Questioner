@@ -2,7 +2,7 @@ import express from 'express';
 
 import users from '../models/users';
 
-import  { validateUser }  from '../helpers/validation';
+import { validateUser } from '../helpers/validation';
 
 const Joi = require('joi');
 
