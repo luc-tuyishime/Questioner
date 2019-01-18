@@ -36,8 +36,8 @@ app.use(helmet());
 app.use('/api/v1/meetups', meetups); // for any route started with /api/v1 use meetups router
 app.use('/api/v1/meetup', upcomingMeetups);
 app.use('/api/v1/meetups', questions);
-app.use('/api/v1', upvote);
-app.use(downvote);
+app.use('/api/v1/questions', upvote);
+app.use('/api/v1/questions', downvote);
 app.use('/api/v1/meetups', rsvp);
 app.use(users);
 

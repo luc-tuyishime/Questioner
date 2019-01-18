@@ -147,7 +147,7 @@ describe('/Delete a meetup', () => {
 });
 
 
-// test create a meetup
+// test upvote a question
 describe('upvote a question', () => {
   it('Should upvote a question', (done) => {
     const upvote = {
@@ -160,6 +160,29 @@ describe('upvote a question', () => {
     };
     chai.request(app)
       .patch('/api/v1/questions/1/upvote')
+      .send(upvote)
+      .end((err, res) => {
+        console.log(res.body);
+        res.body.should.be.a('object');
+        res.body.should.have.property('status').eql(200);
+        done();
+      });
+  });
+});
+
+// test downvote a question
+describe('upvote a question', () => {
+  it('Should downvote a question', (done) => {
+    const upvote = {
+      createdBy: 4,
+      meetup: 2,
+      title: "Life",
+      body: "we must be here",
+      upvote: 2,
+      downvote: 0
+    };
+    chai.request(app)
+      .patch('/api/v1/questions/1/downvote')
       .send(upvote)
       .end((err, res) => {
         console.log(res.body);

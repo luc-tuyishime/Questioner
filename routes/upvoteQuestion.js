@@ -4,7 +4,7 @@ import questions from '../models/questions';
 
 const router = express.Router();
 
-router.patch('/questions/:id/upvote', (req, res) => {
+router.patch('/:id/upvote', (req, res) => {
   const question = questions.find(q => q.id === parseInt(req.params.id, 10));
   if (!question) {
     return res.status(404).send({
