@@ -37,8 +37,8 @@ app.use(logger);
 app.use(helmet());
 
 app.use('/', home);
+app.use('/api/v1/meetups', upcomingMeetups);
 app.use('/api/v1/meetups', meetups); // for any route started with /api/v1 use meetups router
-app.use('/api/v1/meetup', upcomingMeetups);
 app.use('/api/v1/meetups', questions);
 app.use('/api/v1/questions', upvote);
 app.use('/api/v1/questions', downvote);

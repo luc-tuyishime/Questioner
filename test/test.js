@@ -86,7 +86,7 @@ describe('update a meetup', () => {
 describe('Get all upcoming meetup', () => {
   it('/GET/meetups/upcoming', (done) => {
     chai.request(app)
-      .get('/api/v1/meetup/upcoming')
+      .get('/api/v1/meetups/upcoming')
       .end((err, res) => {
         console.log(res.body);
         res.body.should.be.a('object');
