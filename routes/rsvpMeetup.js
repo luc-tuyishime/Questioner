@@ -16,20 +16,13 @@ router.post('/:id/rsvps', (req, res) => {
       error: `The meetup with the id ${req.params.id} was not found`
     });
   }
-  console.log(parseInt(req.params.id, 10));
-  if (!meetup) {
-    return res.status(404).send({
-      status: 404,
-      error: `the meetup with Id ${RsvpMeetup.meetup} is not found`
-    });
-  }
 
   const { error } = validateRsvp(req.body);
-  if(error){
+  if (error) {
     return res.status(400).send({
       status: 400,
       error: error.details[0].message
-    })
+    });
   }
 
   const RsvpMeetup = {
