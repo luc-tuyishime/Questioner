@@ -4,30 +4,33 @@ import users from '../models/users';
 
 import { validateUser } from '../helpers/validation';
 
-const Joi = require('joi');
-
 const router = express.Router();
 
-router.get('/api/v1/users', (req, res) => {
+router.get('/', (req, res) => {
   res.send({
     status: 200,
     data: [users]
   });
 });
 
-router.get('/api/v1/users/:id', (req, res) => {
+router.get('/:id', (req, res) => {
   const user = users.find(u => u.id === parseInt(req.params.id, 10));
-  if (!user) res.status(404).send({
-    status: 404,
-    error : `The user with the id ${req.params.id} was not found`
-  });
+  if (!user) {
+    res.status(404).send({
+      status: 404,
+      error: `The user with the id ${req.params.id} was not found`
+    });
+  }
   res.send(user);
 });
 
-router.post('/api/v1/users/', (req, res) => {
+router.post('/', (req, res) => {
   const { error } = validateUser(req.body);
   if (error) {
-    res.status(400).send(error.details[0].message);
+    res.status(400).send({
+      status: 400,
+      error: error.details[0].message
+    });
   }
   const user = {
     id: users.length + 1,
@@ -47,14 +50,14 @@ router.post('/api/v1/users/', (req, res) => {
   });
 });
 
-router.put('/api/v1/users/:id', (req, res) => {
+router.patch('/:id', (req, res) => {
   // Look up the user
   // if not existing, return 404
   const user = users.find(m => m.id === parseInt(req.params.id, 10));
   if (!user) {
     return res.status(404).send({
       status: 404,
-      error : `The user with the id ${req.params.id} was not found`
+      error: `The user with the id ${req.params.id} was not found`
     });
   }
   // validate
@@ -63,24 +66,28 @@ router.put('/api/v1/users/:id', (req, res) => {
   if (error) res.status(400).send(error.details[0].message);
   // update user
   // return the update user
-  user.createdOn = Date.now();
-  user.location = req.body.location;
-  user.images = req.body.images;
-  user.topic = req.body.topic;
-  user.happeningOn = req.body.happeningOn;
-  user.tags = req.body.tags;
+  user.firstname = req.body.firstname;
+  user.lastname = req.body.lastname;
+  user.othername = req.body.othername;
+  user.email = req.body.email;
+  user.phoneNumber = req.body.phoneNumber;
+  user.username = req.body.username;
+  user.registered = req.body.registered;
+  user.isAdmin = req.body.isAdmin;
   return res.send({
     status: 200,
     data: [user]
   });
 });
 
-router.delete('/api/v1/users/:id', (req, res) => {
+router.delete('/:id', (req, res) => {
   const user = users.find(u => u.id === parseInt(req.params.id, 10));
-  if (!user) res.status(404).send({
-    status: 404,
-    error : `The user with the id ${req.params.id} was not found`
-  });
+  if (!user) {
+    res.status(404).send({
+      status: 404,
+      error: `The user with the id ${req.params.id} was not found`
+    });
+  }
 
   const index = users.indexOf(user);
   users.splice(index, 1);

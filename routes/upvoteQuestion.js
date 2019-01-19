@@ -13,7 +13,7 @@ router.patch('/:id/upvote', (req, res) => {
     });
   }
   question.upvote += 1;
-  res.status(200).send({
+  return res.status(200).send({
     status: 200,
     data: [question]
   });

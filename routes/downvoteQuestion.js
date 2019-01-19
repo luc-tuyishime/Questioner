@@ -6,8 +6,14 @@ const router = express.Router();
 
 router.patch('/:id/downvote', (req, res) => {
   const question = questions.find(q => q.id === parseInt(req.params.id, 10));
+  if (!question) {
+    return res.status(404).send({
+      status: 404,
+      error: `The question with the id ${req.params.id} was not found`
+    });
+  }
   question.downvote += 1;
-  res.status(200).send({
+  return res.status(200).send({
     status: 200,
     data: [question]
   });

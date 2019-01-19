@@ -1,7 +1,5 @@
 import express from 'express';
 
-import moment from 'moment';
-
 import questions from '../models/questions';
 
 import meetups from '../models/meetups';
@@ -28,10 +26,12 @@ router.post('/:meetupId/questions', (req, res) => {
   };
 
   const meetup = meetups.find(m => m.id === parseInt(req.params.meetupId, 10));
-  if (!meetup) res.status(404).send({
-    status: 404,
-    error : `The meetup with the id ${req.params.meetupId} was not found`
-  });
+  if (!meetup) {
+    res.status(404).send({
+      status: 404,
+      error: `The meetup with the id ${req.params.meetupId} was not found`
+    });
+  }
 
 
   const { error } = validateQuestion(req.body);
