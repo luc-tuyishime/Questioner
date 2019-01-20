@@ -1,4 +1,4 @@
-# Questioner  [![Build Status](https://travis-ci.org/luc-tuyishime/Questioner.svg?branch=develop)](https://travis-ci.org/luc-tuyishime/Questioner) [![Coverage Status](https://coveralls.io/repos/github/luc-tuyishime/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/luc-tuyishime/Questioner?branch=develop)
+# Questioner  [![Build Status](https://travis-ci.org/luc-tuyishime/Questioner.svg?branch=develop)](https://travis-ci.org/luc-tuyishime/Questioner) [![Coverage Status](https://coveralls.io/repos/github/luc-tuyishime/Questioner/badge.svg?branch=develop)](https://coveralls.io/github/luc-tuyishime/Questioner?branch=develop) <a href="https://codeclimate.com/github/luc-tuyishime/Questioner/maintainability"><img src="https://api.codeclimate.com/v1/badges/0c7bbe242853a96e1513/maintainability" /></a>
 Questioner​​ helps the meetup organizer prioritize questions to be answered. Other users can vote on asked questions and they bubble to the top or bottom of the log.
 
 
