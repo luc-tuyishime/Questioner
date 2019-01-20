@@ -7,7 +7,7 @@ export const validateQuestion = (question) => {
   };
 
   return Joi.validate(question, schema);
-}
+};
 
 export const validateMeetup = (meetup) => {
   const schema = {
@@ -19,7 +19,7 @@ export const validateMeetup = (meetup) => {
   };
 
   return Joi.validate(meetup, schema);
-}
+};
 
 export const validateUser = (user) => {
   const schema = {
@@ -34,7 +34,7 @@ export const validateUser = (user) => {
   };
 
   return Joi.validate(user, schema);
-}
+};
 
 export const validateRsvp = (rsvp) => {
   const schema = {
@@ -42,4 +42,4 @@ export const validateRsvp = (rsvp) => {
   };
 
   return Joi.validate(rsvp, schema);
-}
+};
