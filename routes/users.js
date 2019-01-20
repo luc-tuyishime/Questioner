@@ -21,7 +21,10 @@ router.get('/:id', (req, res) => {
       error: `The user with the id ${req.params.id} was not found`
     });
   }
-  res.send(user);
+  return res.send({
+    status: 200,
+    data: [user]
+  });
 });
 
 router.post('/', (req, res) => {
