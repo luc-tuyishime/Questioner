@@ -10,15 +10,15 @@ import logger from './middleware/logger';
 
 import meetups from './routes/meetups';
 
-import upcomingMeetups from './routes/upcomingMeetups';
+import comments from './routes/comments';
 
-import questions from './routes/questions';
-
-import upvote from './routes/upvoteQuestion';
-
-import downvote from './routes/downvoteQuestion';
-
-import rsvp from './routes/rsvpMeetup';
+// import upcomingMeetups from './routes/upcomingMeetups';
+//
+// import questions from './routes/questions';
+//
+// import upvote from './routes/upvoteQuestion';
+//
+// import downvote from './routes/downvoteQuestion';
 
 import users from './routes/users';
 
@@ -37,13 +37,14 @@ app.use(logger);
 app.use(helmet());
 
 app.use('/', home);
-app.use('/api/v1/meetups', upcomingMeetups);
+// app.use('/api/v1/meetups', upcomingMeetups);
 app.use('/api/v1/meetups', meetups); // for any route started with /api/v1 use meetups router
-app.use('/api/v1/meetups', questions);
-app.use('/api/v1/questions', upvote);
-app.use('/api/v1/questions', downvote);
-app.use('/api/v1/meetups', rsvp);
 app.use('/api/v1/users', users);
+app.use('/api/v1/question/', comments);
+// app.use('/api/v1/meetups', questions);
+// app.use('/api/v1/questions', upvote);
+// app.use('/api/v1/questions', downvote);
+
 
 if (app.get('env') === 'development') {
   app.use(morgan('tiny'));
