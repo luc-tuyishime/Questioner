@@ -1,7 +1,5 @@
 import express from 'express';
 
-import moment from 'moment';
-
 import meetupController from "../controllers/meetups";
 
 import commentController from "../controllers/comments";
@@ -16,6 +14,5 @@ router.post("/create", meetupController.create);
 router.delete("/:id", meetupController.delete);
 router.post("/:meetupId/rsvps", meetupController.createRsvp);
 router.post("/:id/question", meetupController.createQuestion);
-
 
 module.exports = router;

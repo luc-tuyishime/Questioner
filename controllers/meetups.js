@@ -147,24 +147,21 @@ exports.update = (req, res) => {
 
 
 /* DELETE A MEETUP */
-// exports.delete = (req, res) => {
-//    const meetupId = parseInt(req.params.id, 10);
-//       db.query('DELETE FROM meetup WHERE id_meetup = $1 returning *', [meetupId], (err, result) => {
-//         if (err) {
-//           throw err;
-//         }
-//         if (result.rows.length === 0) {
-//             return res.status(404).json({
-//                 status: 404,
-//                 error: 'meetup not found'
-//             });
-//         }
-//         return res.status(200).json({
-//           status: 200,
-//           data: `User deleted with ID: ${meetupId}`
-//         });
-//       });
-//   };
+exports.delete = (req, res) => {
+   const meetupId = parseInt(req.params.id, 10);
+      db.query('DELETE FROM meetup WHERE id_meetup = $1 returning *', [meetupId], (err, result) => {
+        if (result.rows.length === 0) {
+            return res.status(404).json({
+                status: 404,
+                error: 'meetup not found'
+            });
+        }
+          return res.status(200).json({
+            status: 200,
+            data: `User deleted with ID: ${meetupId}`
+          });
+      });
+  };
 
 
 /* POST A question */
@@ -207,50 +204,3 @@ exports.createQuestion = (req, res) => {
     }
   });
 }
-
-
-/* POST A question */
-// exports.createQuestion = (req, res) => {
-//     const {
-//         title,
-//         body
-//     } = req.body;
-//     const meetupId = parseInt(req.params.id, 10);
-//
-//     const {
-//         error
-//     } = validateQuestion(req.body);
-//     if (error) {
-//         return res.status(400).send({
-//             status: 400,
-//             error: error.details[0].message
-//         });
-//     }
-//
-//     db.query('SELECT * FROM meetup WHERE id_meetup = $1', [meetupId], (err, result) => {
-//         if (err) {
-//             throw err;
-//         } else if (result.rows.length === 0) {
-//             return res.status(404).json({
-//                 status: 404,
-//                 error: `Sorry the meetup with the id ${meetupId} is not found`
-//             });
-//         } else {
-//             db.query('INSERT INTO question (id_user, id_meetup, title, body) VALUES ($1,$2,$3,$4) RETURNING *',
-//                 [req.id_user, 1, title, body], (err, results) => {
-//                     if (error) {
-//                         console.log(error);
-//                         return res.status(400).json({
-//                             status: 400,
-//                             error: error.details[0].message
-//                         });
-//                     }
-//
-//                     res.status(201).json({
-//                         status: 201,
-//                         data: results.rows
-//                     });
-//                 });
-//         }
-//     });
-// }

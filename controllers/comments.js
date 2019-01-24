@@ -9,7 +9,7 @@ exports.postComment = (req, res) => {
         if (result.rows.length === 0) {
             return res.status(404).json({
                 status: 404,
-                error: 'question not found'
+                error: `question not found`
             });
         } else {
             db.query('INSERT INTO comments (id_user, id_question, body) VALUES ($1,$2,$3) RETURNING *',

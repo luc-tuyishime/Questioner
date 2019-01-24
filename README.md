@@ -15,16 +15,15 @@ Questioner​​ helps the meetup organizer prioritize questions to be answered.
 | Ressource URL | Methods  | Description  |
 | ------- | --- | --- |
 | / | GET | The index (welcome message) |
-| /api/v1/meetups | GET | Fetch all meetups |
+| /api/v1/meetups/fetchAll | GET | Fetch all meetups |
 | /api/v1/meetups/:id | GET | Fetch a particular meetup |
-| /api/v1/questions/ | GET | Fetch all meetup questions  |
-| /api/v1/meetups/upcoming | GET | Fetch all upcoming meetups |
-| /api/v1/meetups | POST | Post to the collection of meetups |
-| /api/v1/questions | POST | Post a question on meetup |
+| /api/v1/meetups/Upcoming | GET | Fetch all upcoming meetups |
+| /api/v1/meetups/:id/rsvps | GET | Rsvp to a meetup |
+| /api/v1/meetups/create | POST | Post to the collection of meetups |
+| /api/v1/meetups/:id/questions | POST | Post a question on meetup |
+| /api/v1/question/:id/comment | POST | Comment to a question |
+| /api/v1/question/:id/comment | GET | Get comments related to a question |
 | /api/v1/meetups/:id | PATCH | Update a particular meetup |
-| /api/v1/meetups/:id | PATCH | Update a particular meetup |
-| /api/v1/questions/:id/upvote | PATCH | Upvote on a meetup question |
-| /api/v1/questions/:id/downvote  | PATCH | Downvote on a meetup question |
 | /api/v1/meetups/:id | DELETE | Delete a particular meetup |
 
 ## Tools Used
