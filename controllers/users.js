@@ -1,135 +1,96 @@
+import moment from 'moment';
+import uuidv4 from 'uuid/v4';
 import db from '../config/database';
-import jwt from 'jsonwebtoken';
-import {
-    validateUser
-} from '../helpers/validation';
+import Helper from '../controllers/helper';
 
-
-exports.create = (req, res) => {
-
-    const {
-        error
-    } = validateUser(req.body);
-    if (error) {
-        return res.status(400).send({
-            status: 400,
-            error: error.details[0].message
-        });
+const User = {
+  /**
+   * Create A User
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} reflection object
+   */
+  async create(req, res) {
+    if (!req.body.username || !req.body.email || !req.body.password || !req.body.firstname || !req.body.lastname || !req.body.isAdmin || !req.body.othername) {
+      return res.status(400).send({'message': 'Some values are missing'});
     }
-
-    const newUser = {
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password,
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        isAdmin: true,
-        othername: req.body.othername
-    };
-    db.query("INSERT INTO users (username,email,password,firstname,lastname,isadmin,othername) VALUES ($1,$2,$3,$4,$5,$6,$7) returning *", [
-        newUser.username, newUser.email, newUser.password, newUser.firstname, newUser.lastname, newUser.isAdmin, newUser.othername
-    ], (err, result) => {
-        if (err) {
-            console.log(err);
-        }
-        return res.status(200).json({
-            status: 200,
-            data: result
-        });
-    });
-}
-
-exports.login = (req, res) => {
-    const loginUser = {
-        id: 1,
-        username: 'jeanluca',
-        email: 'luc@gmail.com'
+    if (!Helper.isValidEmail(req.body.email)) {
+      return res.status(400).send({ 'message': 'Please enter a valid email address' });
     }
+    const hashPassword = Helper.hashPassword(req.body.password);
 
-    jwt.sign({
-        loginUser
-    }, 'secretkey', (err, token) => {
-        res.json({
-            token
-        })
-    });
-}
+    const createQuery = `INSERT INTO
+      users(username,email,password,firstname,lastname,isadmin,othername)
+      VALUES($1, $2, $3, $4, $5, $6, $7)
+      returning *`;
+      const newUser = [
+        req.body.username,
+        req.body.email,
+        hashPassword,
+        req.body.firstname,
+        req.body.lastname,
+        req.body.isAdmin,
+        req.body.othername
+      ];
 
-
-exports.fetchAll = (req, res) => {
-    db.query('SELECT * FROM users ORDER BY user_id DESC', (err, result) => {
-        if (err) {
-            return res.status(500).json(err);
-        }
-        return res.status(200).json({
-            status: 200,
-            data: result.rows
-        });
-    });
-};
-
-
-exports.fetch = (req, res) => {
-    const userId = parseInt(req.params.id, 10);
-
-    if (!userId) {
-        return res.status(404).send({
-            status: 404,
-            error: `The user with the id ${userId} was not found`
-        });
+    try {
+      const { rows } = await db.query(createQuery, newUser);
+      const token = Helper.generateToken({id: rows[0].id});
+      return res.status(201).send({ token });
+    } catch(error) {
+      if (error.routine === '_bt_check_unique') {
+        return res.status(400).send({ 'message': 'User with that EMAIL already exist' })
+      }
+      return res.status(400).send(error);
     }
-
-    db.query("SELECT * FROM users WHERE user_id = $1", [userId], (err, result) => {
-        if (err) {
-            return res.status(500).json(err);
-        }
-        return res.status(200).json({
-            status: 200,
-            data: result.rows
-        });
-    });
-};
-
-exports.update = (req, res) => {
-    const userId = parseInt(req.params.id, 10);
-
-    const updateUser = {
-        firstname: req.body.firstname,
-        lastname: req.body.lastname,
-        othername: req.body.othername,
-        username: req.body.username,
-        email: req.body.email,
-        password: req.body.password
-    };
-
-    console.log(updateUser);
-
-    db.query(
-        'UPDATE users SET firstname = $1, lastname = $2, othername = $3, username = $4, email = $5, password = $6 WHERE user_id = $7 returning *',
-        [updateUser.firstname, updateUser.lastname, updateUser.othername, updateUser.username, updateUser.email, updateUser.password, userId],
-        (err, result) => {
-            if (err) {
-                throw err;
-            }
-            res.status(200).json({
-                status: 200,
-                data: result.rows
-            })
-        }
-    );
+  },
+  /**
+   * Login
+   * @param {object} req
+   * @param {object} res
+   * @returns {object} user object
+   */
+  async login(req, res) {
+      const hashPassword = Helper.hashPassword(req.body.password);
+    if (!req.body.email || !req.body.password) {
+      return res.status(400).send({'message': 'Some values are missing'});
+    }
+    if (!Helper.isValidEmail(req.body.email)) {
+      return res.status(400).send({ 'message': 'Please enter a valid email address' });
+    }
+    const text = 'SELECT * FROM users WHERE email = $1';
+    try {
+      const { rows } = await db.query(text, [req.body.email]);
+      if (!rows[0]) {
+        return res.status(400).send({'message': 'The credentials you provided is incorrect'});
+      }
+      if(!Helper.comparePassword(rows[0].password, hashPassword)) {
+        return res.status(400).send({ 'message': 'The credentials you provided is incorrect' });
+      }
+      const token = Helper.generateToken(rows[0].id);
+      return res.status(200).send({ token });
+    } catch(error) {
+      return res.status(400).send(error)
+    }
+  },
+  /**
+   * Delete A User
+   * @param {object} req
+   * @param {object} res
+   * @returns {void} return status code 204
+   */
+  async delete(req, res) {
+    const deleteQuery = 'DELETE FROM users WHERE id=$1 returning *';
+    try {
+      const { rows } = await db.query(deleteQuery, [req.user.id]);
+      if(!rows[0]) {
+        return res.status(404).send({'message': 'user not found'});
+      }
+      return res.status(204).send({ 'message': 'deleted' });
+    } catch(error) {
+      return res.status(400).send(error);
+    }
+  }
 }
 
-exports.delete = (req, res) => {
-    const userToDelete = parseInt(req.params.id, 10);
-
-    db.query('DELETE FROM users WHERE user_id = $1', [userToDelete], (err, results) => {
-        if (err) {
-            throw err;
-        }
-
-        res.status(200).json({
-            status: 200,
-            data: `The user with the  id: ${userToDelete} has been deleted`
-        });
-    });
-}
+export default User;
