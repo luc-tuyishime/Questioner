@@ -27,9 +27,8 @@ export const validateUser = (user) => {
     lastname: Joi.string().min(5).required(),
     othername: Joi.string().min(5).required(),
     email: Joi.string().email().min(5).required(),
-    phoneNumber: Joi.string().min(5).required(),
+    password: Joi.string().min(5).required(),
     username: Joi.string().min(5).required(),
-    registered: Joi.string().min(5).required(),
     isAdmin: Joi.boolean().required()
   };
 
@@ -42,4 +41,12 @@ export const validateRsvp = (rsvp) => {
   };
 
   return Joi.validate(rsvp, schema);
+};
+
+
+/* Find user */
+
+export const findUser = (userId) => {
+  const find = db.query(`SELECT * FROM users WHERE user_id = ${userId}`);
+  if (find) return find;
 };
